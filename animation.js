@@ -1,255 +1,141 @@
-/* Evolutionary ecology, adapted from the supplied animation.
-   All content and links work without this decorative script. */
+/* Simultaneously growing species. Winding paths, colour-based exclusion,
+   length-weighted steering and founder-age Poisson branching. Natural contact
+   or boundary deaths end growth, followed by a hold, fade and fresh seeds. */
 (() => {
-  "use strict";
-
-  const canvas = document.getElementById("ecology");
-  const hero = document.querySelector(".hero");
-  const toggle = document.getElementById("animation-toggle");
-  if (!canvas || !hero || !toggle) return;
-
-  let ctx;
-  try { ctx = canvas.getContext("2d"); } catch { return; }
-  if (!ctx) return;
-
-  const COLORS = ["#637f6b", "#9b8c66", "#7889a2", "#a47e75"];
-  const MAX_NODES = 3500;
-  const MAX_TIPS = 155;
-  const FRAME_INTERVAL = 1000 / 30;
-  const HOLD_DURATION = 2400;
-  const FADE_DURATION = 1600;
-  const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
-  const random = (min, max) => min + Math.random() * (max - min);
-
-  let width = 0;
-  let height = 0;
-  let pixelRatio = 0;
-  let nodes = [];
-  let tips = [];
-  let tick = 0;
-  let phase = "growing";
-  let phaseStarted = 0;
-  let cycleOpacity = 1;
-  let frameId = null;
-  let lastFrame = 0;
-  let stoppedAt = null;
-  let inView = true;
-  let paused = motionPreference.matches;
-  const mouse = { x: -999, y: -999 };
-
+  'use strict';
+  const canvas = document.getElementById('ecology'), toggle = document.getElementById('animation-toggle');
+  if (!canvas || !toggle || !window.GrowthPhysics) return;
+  const ctx = canvas.getContext('2d'); if (!ctx) return;
+  const P = window.GrowthPhysics;
+  const COLORS = ['#3c8b72', '#4e79b2', '#b08b3d', '#783cb0'];
+  const CELL_SIZE = 8, FIELD_RADIUS = 14, FIELD_GAIN = .55;
+  const GROWTH_SPEED = 47;
+  const EMERGENCY_NODE_LIMIT = 400000; // Pause visibly; never pretend a truncated run finished.
+  const CURVATURE_LENGTH = 90, CURVATURE_SCALE = .004, BRANCH_SPACING = 260;
+  const AGE_DECAY_LENGTH = 2 * BRANCH_SPACING;
+  const nextFork = age => P.ageDecayingFork(age, 1 / BRANCH_SPACING, AGE_DECAY_LENGTH);
+  const HOLD_DURATION = 2000, FADE_DURATION = 2600;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+  const random = (a,b) => a + Math.random()*(b-a);
+  let width=0,height=0,dpr=1,nodes=[],tips=[],cells=new Map(),totalLength=0;
+  let phase='growing',phaseTime=0,opacity=1,paused=reduce.matches,frame=null,last=null,cycle=0;
+  const mouse={x:-999,y:-999};
+  let inView=true;
+  function index(node) {
+    const key=`${Math.floor(node.x/CELL_SIZE)},${Math.floor(node.y/CELL_SIZE)}`;
+    if(!cells.has(key))cells.set(key,[]);cells.get(key).push(node);
+  }
+  function nearby(x,y,fn) {
+    const col=Math.floor(x/CELL_SIZE),row=Math.floor(y/CELL_SIZE);
+    for(let dx=-2;dx<=2;dx++)for(let dy=-2;dy<=2;dy++) {
+      const list=cells.get(`${col+dx},${row+dy}`);if(list)for(const node of list)fn(node);
+    }
+  }
+  function field(x,y,color) {
+    let fx=0,fy=0;
+    nearby(x,y,o=>{
+      if(o.color===color)return;
+      const dx=x-o.x,dy=y-o.y,d2=dx*dx+dy*dy;
+      if(d2<FIELD_RADIUS**2){const weight=o.length*P.sourceWeight(d2,FIELD_RADIUS);fx+=dx*weight;fy+=dy*weight;}
+    });
+    const mx=x-mouse.x,my=y-mouse.y,m2=mx*mx+my*my;
+    if(m2<55**2){const weight=P.sourceWeight(m2,55,47);fx+=mx*weight;fy+=my*weight;}
+    return [fx,fy];
+  }
+  function pointDistance(p,a,b) {
+    const dx=b.x-a.x,dy=b.y-a.y,d2=dx*dx+dy*dy;
+    const u=d2?Math.max(0,Math.min(1,((p.x-a.x)*dx+(p.y-a.y)*dy)/d2)):0;
+    return (p.x-a.x-u*dx)**2+(p.y-a.y-u*dy)**2;
+  }
+  function contact(a,b,color) {
+    let hit=false;
+    nearby(b.x,b.y,o=>{
+      if(hit||o.color===color)return;
+      const p=o.parent<0?o:nodes[o.parent];
+      // Segments are at most .75 px; test both ends against each segment.
+      hit=Math.min(pointDistance(a,p,o),pointDistance(b,p,o),pointDistance(p,a,b),pointDistance(o,a,b))<=36;
+    });return hit;
+  }
+  function integrate(tip,k,distance) {
+    const parent=nodes[tip.id];let state={x:parent.x,y:parent.y,angle:tip.angle},remaining=distance,travelled=0;
+    while(remaining>1e-9) {
+      if(nodes.length>=EMERGENCY_NODE_LIMIT){phase='capacity';paused=true;syncLabel();break;}
+      const f=field(state.x,state.y,tip.color);
+      let h=Math.min(remaining,.75,.04/Math.max(.001,Math.abs(k)+FIELD_GAIN*Math.hypot(...f)));
+      let result=P.rk4(state,k,h,(x,y)=>field(x,y,tip.color),FIELD_GAIN);
+      while((result.positionError>.001||result.angleError>.0001||Math.abs(result.next.angle-state.angle)>.05)&&h>1e-5) {
+        h/=2;result=P.rk4(state,k,h,(x,y)=>field(x,y,tip.color),FIELD_GAIN);
+      }
+      const n=result.next;
+      if(n.x<6||n.y<6||n.x>width-6||n.y>height-6||contact(state,n,tip.color)){tip.alive=false;break;}
+      const node={x:n.x,y:n.y,parent:tip.id,color:tip.color,length:h};
+      tip.id=nodes.length;nodes.push(node);index(node);tip.angle=n.angle;
+      totalLength+=h;remaining-=h;travelled+=h;state=n;
+    }
+    return travelled;
+  }
+  function update(step) {
+    const queue=tips.filter(t=>t.alive).map(tip=>({tip,remaining:step}));
+    for(let i=0;i<queue.length;i++) {
+      const work=queue[i],tip=work.tip;
+      while(tip.alive&&work.remaining>1e-9&&phase==='growing') {
+        const h=Math.min(work.remaining,1,tip.forkRemaining);
+        const k=P.ou(tip.curvature,h/2,CURVATURE_LENGTH,CURVATURE_SCALE);
+        const travelled=integrate(tip,k,h);
+        tip.curvature=P.ou(k,travelled/2,CURVATURE_LENGTH,CURVATURE_SCALE);
+        work.remaining-=travelled;tip.forkRemaining-=travelled;tip.age+=travelled;
+        if(tip.alive&&tip.forkRemaining<1e-9) {
+          // Both daughters inherit the founder's age, never a fresh clock.
+          // Their independent future event clocks use the integrated hazard.
+          const child={...tip,curvature:-tip.curvature,forkRemaining:nextFork(tip.age)};
+          tips.push(child);queue.push({tip:child,remaining:work.remaining});
+          tip.forkRemaining=nextFork(tip.age);
+        }
+      }
+    }
+    return phase==='growing'&&tips.every(t=>!t.alive);
+  }
   function reset() {
-    nodes = [];
-    tips = [];
-    tick = 0;
-    phase = "growing";
-    cycleOpacity = 1;
-
-    for (let i = 0; i < 5; i++) {
-      nodes.push({
-        x: width * (0.15 + 0.7 * (i + 0.5) / 5) + random(-8, 8),
-        y: height * (i % 2 ? 0.75 : 0.25),
-        parent: -1,
-        color: i % COLORS.length,
-        organism: i
-      });
-      tips.push({
-        id: i,
-        angle: random(0, Math.PI * 2),
-        alive: true,
-        color: i % COLORS.length,
-        organism: i
-      });
-    }
-
-    // Start with a little growth so the art is visible immediately,
-    // including as a still image when reduced motion is enabled.
-    for (let i = 0; i < 65; i++) {
-      if (update()) break;
+    nodes=[];tips=[];cells=new Map();totalLength=0;phase='growing';phaseTime=0;opacity=1;cycle++;
+    const count=COLORS.length;
+    // Leave room for each founder to grow before reaching a boundary.
+    const marginX=width*.2,marginY=height*.2;
+    for(let i=0;i<count;i++) {
+      const node={x:random(marginX,width-marginX),y:random(marginY,height-marginY),parent:-1,color:i,length:0};
+      nodes.push(node);index(node);tips.push({id:i,color:i%4,angle:random(0,2*Math.PI),curvature:CURVATURE_SCALE*P.normal(),alive:true,age:0,forkRemaining:nextFork(0)});
     }
   }
-
-  function update() {
-    tick++;
-    // Iterate over a snapshot: branching may append more tips.
-    for (const tip of [...tips]) {
-      if (!tip.alive) continue;
-      const parent = nodes[tip.id];
-      const angle = tip.angle + Math.sin(tick * 0.02 + tip.id) * 0.13 + random(-0.2, 0.2);
-      const step = random(1.5, 3.2);
-      let x = parent.x + Math.cos(angle) * step;
-      let y = parent.y + Math.sin(angle) * step;
-
-      const distance = Math.hypot(mouse.x - x, mouse.y - y);
-      if (distance < 55) {
-        x += (x - mouse.x) / (distance + 1) * 1.3;
-        y += (y - mouse.y) / (distance + 1) * 1.3;
-      }
-
-      if (x < 6 || x > width - 6 || y < 6 || y > height - 6 || nodes.length >= MAX_NODES) {
-        tip.alive = false;
-        continue;
-      }
-
-      let collision = false;
-      for (let j = 0; j < 12; j++) {
-        const other = nodes[Math.floor(Math.random() * nodes.length)];
-        if (other.organism !== tip.organism && (x - other.x) ** 2 + (y - other.y) ** 2 < 30) {
-          collision = true;
-          break;
-        }
-      }
-      if (collision) {
-        tip.angle += random(-1.6, 1.6);
-        continue;
-      }
-
-      const id = nodes.length;
-      nodes.push({ x, y, parent: tip.id, color: tip.color, organism: tip.organism });
-      tip.id = id;
-      tip.angle = angle;
-      if (Math.random() < 0.012 && tips.length < MAX_TIPS) {
-        tips.push({ id, angle: angle + random(-1.3, 1.3), alive: true, color: tip.color, organism: tip.organism });
-      }
-    }
-    return nodes.length >= MAX_NODES || tips.every(tip => !tip.alive);
-  }
-
   function render() {
-    ctx.clearRect(0, 0, width, height);
-    ctx.lineWidth = 0.85;
-    ctx.lineCap = "round";
-    ctx.globalAlpha = 0.55 * cycleOpacity;
-
-    // Batch lines by colour, instead of issuing a stroke per segment.
-    for (let color = 0; color < COLORS.length; color++) {
-      ctx.beginPath();
-      ctx.strokeStyle = COLORS[color];
-      for (const node of nodes) {
-        if (node.parent < 0 || node.color !== color) continue;
-        const parent = nodes[node.parent];
-        ctx.moveTo(parent.x, parent.y);
-        ctx.lineTo(node.x, node.y);
-      }
-      ctx.stroke();
+    ctx.clearRect(0,0,width,height);ctx.lineWidth=2.4;ctx.lineCap='round';
+    for(let color=0;color<4;color++) {
+      ctx.strokeStyle=COLORS[color];ctx.globalAlpha=.62*opacity;ctx.beginPath();
+      for(const n of nodes)if(n.parent>=0&&n.color===color){const p=nodes[n.parent];ctx.moveTo(p.x,p.y);ctx.lineTo(n.x,n.y);}ctx.stroke();
     }
-
-    ctx.globalAlpha = cycleOpacity;
-    for (const tip of tips) {
-      if (!tip.alive) continue;
-      const node = nodes[tip.id];
-      ctx.fillStyle = COLORS[tip.color];
-      ctx.beginPath();
-      ctx.arc(node.x, node.y, 1.6, 0, Math.PI * 2);
-      ctx.fill();
+    ctx.globalAlpha=.7*opacity;
+    for(const tip of tips)if(tip.alive){const n=nodes[tip.id];ctx.fillStyle=COLORS[tip.color];ctx.beginPath();ctx.arc(n.x,n.y,2.5,0,2*Math.PI);ctx.fill();}
+    ctx.globalAlpha=1;
+  }
+  function animate(now) {
+    frame=null;const elapsed=last===null?0:Math.min(100,now-last);last=now;
+    if(!paused&&!document.hidden&&inView){
+      if(phase==='growing'){if(update(GROWTH_SPEED*elapsed/1000)){phase='holding';phaseTime=0;}}
+      else {phaseTime+=elapsed;if(phase==='holding'&&phaseTime>=HOLD_DURATION){phase='fading';phaseTime=0;}
+        else if(phase==='fading'){opacity=Math.max(0,1-phaseTime/FADE_DURATION);if(opacity===0)reset();}}
     }
-    ctx.globalAlpha = 1;
+    render();if(!paused&&!document.hidden&&inView)frame=requestAnimationFrame(animate);
   }
-
-  function resize() {
-    const rect = canvas.getBoundingClientRect();
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    if (rect.width < 1 || rect.height < 1) return;
-    if (Math.abs(rect.width - width) < 1 && Math.abs(rect.height - height) < 1 && dpr === pixelRatio) return;
-
-    width = rect.width;
-    height = rect.height;
-    pixelRatio = dpr;
-    canvas.width = Math.round(width * dpr);
-    canvas.height = Math.round(height * dpr);
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    mouse.x = mouse.y = -999;
-    reset();
-    const now = performance.now();
-    phaseStarted = now - 900;
-    stoppedAt = frameId === null ? now : null;
-    render();
-  }
-
-  function animate(time) {
-    frameId = null;
-    if (!shouldAnimate()) return;
-
-    if (time - lastFrame >= FRAME_INTERVAL) {
-      lastFrame = time;
-      if (phase === "growing") {
-        cycleOpacity = Math.min(1, (time - phaseStarted) / 900);
-        if (update()) {
-          phase = "holding";
-          phaseStarted = time;
-        }
-      } else if (phase === "holding" && time - phaseStarted >= HOLD_DURATION) {
-        phase = "fading";
-        phaseStarted = time;
-      } else if (phase === "fading") {
-        cycleOpacity = Math.max(0, 1 - (time - phaseStarted) / FADE_DURATION);
-        if (cycleOpacity === 0) {
-          reset();
-          phaseStarted = time;
-          cycleOpacity = 0;
-        }
-      }
-      render();
-    }
-    frameId = requestAnimationFrame(animate);
-  }
-
-  function shouldAnimate() {
-    return !paused && !document.hidden && inView && width > 0 && height > 0;
-  }
-
-  function syncPlayback() {
-    const now = performance.now();
-    if (shouldAnimate() && frameId === null) {
-      if (stoppedAt !== null) phaseStarted += now - stoppedAt;
-      stoppedAt = null;
-      lastFrame = 0;
-      frameId = requestAnimationFrame(animate);
-    } else if (!shouldAnimate() && frameId !== null) {
-      cancelAnimationFrame(frameId);
-      frameId = null;
-      stoppedAt = now;
-    }
-    toggle.textContent = paused ? "Play animation" : "Pause animation";
-    // Pressed means the pause state is active.
-    toggle.setAttribute("aria-pressed", String(paused));
-  }
-
-  toggle.addEventListener("click", () => {
-    paused = !paused;
-    syncPlayback();
-  });
-  motionPreference.addEventListener("change", event => {
-    paused = event.matches;
-    if (paused) {
-      reset();
-      phaseStarted = performance.now() - 900;
-      cycleOpacity = 1;
-      render();
-    }
-    syncPlayback();
-  });
-  document.addEventListener("visibilitychange", syncPlayback);
-
-  // The canvas itself never intercepts text selection or link clicks.
-  hero.addEventListener("pointermove", event => {
-    const rect = canvas.getBoundingClientRect();
-    mouse.x = event.clientX - rect.left;
-    mouse.y = event.clientY - rect.top;
-  }, { passive: true });
-  hero.addEventListener("pointerleave", () => { mouse.x = mouse.y = -999; }, { passive: true });
-
-  window.addEventListener("resize", () => { resize(); syncPlayback(); }, { passive: true });
-  if ("ResizeObserver" in window) {
-    new ResizeObserver(() => { resize(); syncPlayback(); }).observe(canvas);
-  }
-  if ("IntersectionObserver" in window) {
-    new IntersectionObserver(entries => {
-      inView = entries[0].isIntersecting;
-      syncPlayback();
-    }).observe(hero);
-  }
-
-  resize();
-  toggle.hidden = false;
-  syncPlayback();
+  function syncLabel(){toggle.textContent=phase==='capacity'?'Restart animation':paused?'Play animation':'Pause animation';toggle.title=phase==='capacity'?'Drawing capacity reached; restart with new seeds':'';toggle.setAttribute('aria-pressed',String(paused));}
+  function wake(){last=null;syncLabel();if(frame===null)frame=requestAnimationFrame(animate);}
+  function resize(){const box=canvas.getBoundingClientRect(),ratio=Math.min(devicePixelRatio||1,2);if(box.width<1||box.height<1)return;if(width===box.width&&height===box.height&&dpr===ratio)return;width=box.width;height=box.height;dpr=ratio;canvas.width=width*dpr;canvas.height=height*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);reset();render();wake();}
+  window.ecologySimulation=Object.freeze({pause(){paused=true;wake();},resume(){if(phase==='capacity')return;paused=false;wake();},getState(){return {width,height,colors:[...COLORS],nodes:nodes.map(n=>({...n})),tips:tips.map(t=>({...t})),phase,paused,cycle,totalLength};}});
+  toggle.addEventListener('click',()=>{if(phase==='capacity'){reset();paused=reduce.matches;}else paused=!paused;wake();});
+  reduce.addEventListener('change',e=>{paused=e.matches||phase==='capacity';wake();});
+  document.addEventListener('visibilitychange',wake);
+  document.addEventListener('pointermove',e=>{const bounds=canvas.getBoundingClientRect();mouse.x=e.clientX-bounds.left;mouse.y=e.clientY-bounds.top;},{passive:true});
+  document.addEventListener('pointerleave',()=>{mouse.x=mouse.y=-999;});
+  window.addEventListener('scroll',()=>{mouse.x=mouse.y=-999;},{passive:true});
+  if('IntersectionObserver' in window)new IntersectionObserver(([entry])=>{inView=entry.isIntersecting&&entry.intersectionRatio>0;wake();},{threshold:[0,.001]}).observe(canvas);
+  window.addEventListener('resize',resize,{passive:true});
+  if('ResizeObserver' in window)new ResizeObserver(resize).observe(canvas);
+  resize();toggle.hidden=false;
 })();

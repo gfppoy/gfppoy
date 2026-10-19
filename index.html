@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="light">
-    <meta name="theme-color" content="#eeeae2">
+    <meta name="theme-color" content="#f7f7f2">
     <meta name="description" content="Darius Muglich is a DPhil student in machine learning at the University of Oxford. Research in optimization, multi-agent learning and coordination, discrete computation, and neurosymbolic AI.">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Darius Muglich">
@@ -13,95 +13,115 @@
     <title>Darius Muglich — Machine Learning Research</title>
     <link rel="canonical" href="https://dariusmuglich.com/">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="style.css">
-    <script src="animation.js" defer></script>
+    <link rel="stylesheet" href="style.css?v=helvetica-2">
+    <script src="reveal.js" defer></script>
+    <script src="contact-config.js" defer></script>
+    <script src="contact.js" defer></script>
+    <script src="growth-physics.js" defer></script>
+    <script src="animation.js?v=interior-starts-1" defer></script>
   </head>
   <body id="top">
     <a class="skip-link" href="#main">Skip to content</a>
 
     <div class="page">
       <header class="site-header">
-        <a class="wordmark" href="#top">Darius Muglich</a>
+        <span class="wordmark">Darius Muglich</span>
         <nav class="header-links" aria-label="Profile links">
-          <!-- TODO: Replace each pending-link span with an <a> using your URL. See README.md. -->
-          <span class="pending-link" aria-disabled="true" title="Add your Google Scholar profile URL">Scholar <span aria-hidden="true">↗</span></span>
-          <!-- TODO: Replace cv.pdf with your actual academic CV. -->
-          <a href="cv.pdf" target="_blank" rel="noopener" title="CV placeholder — replace with your academic CV">CV <span aria-hidden="true">↗</span></a>
-          <span class="pending-link" aria-disabled="true" title="Add your GitHub profile URL">GitHub <span aria-hidden="true">↗</span></span>
+          <a href="for-fun/">For fun</a>
+          <a href="https://scholar.google.com/citations?user=EOXzZqoAAAAJ&amp;hl=en" target="_blank" rel="noopener">Scholar</a>
+          <a href="cv.pdf?v=2026-10-20-4" target="_blank" rel="noopener" title="Darius Muglich — CV (PDF)">CV</a>
+          <div class="contact-line">
+            <button class="contact-trigger" id="contact-email" type="button" aria-expanded="false" aria-controls="contact-panel" hidden>Email</button>
+            <noscript><span>Enable JavaScript to reveal the email address.</span></noscript>
+            <section class="contact-panel" id="contact-panel" aria-labelledby="contact-title" hidden>
+              <div class="contact-panel-heading"><h2 id="contact-title">Email</h2><button id="contact-close" type="button" aria-label="Close email panel">×</button></div>
+              <p id="contact-intro">A quick check before revealing my address.</p>
+              <div id="contact-challenge"></div>
+              <p id="contact-status" role="status" aria-live="polite"></p>
+              <button class="contact-action" id="contact-retry" type="button" hidden>Try again</button>
+              <div id="contact-result" hidden>
+                <label class="contact-address-label" for="contact-address">Email address</label>
+                <input id="contact-address" type="text" readonly autocomplete="off" spellcheck="false">
+                <div class="contact-actions"><button class="contact-action" id="contact-copy" type="button">Copy address</button><a id="contact-open">Open email</a></div>
+              </div>
+            </section>
+          </div>
         </nav>
       </header>
 
       <main id="main">
-        <section class="hero" aria-labelledby="name">
+        <section class="hero" aria-label="Introduction">
           <div class="ecology" aria-hidden="true">
             <canvas id="ecology"></canvas>
           </div>
-
           <div class="hero-copy">
-            <h1 id="name">Darius Muglich</h1>
-            <p class="bio">I'm a DPhil student in machine learning at the University of Oxford, advised by Jakob Foerster. My research spans optimization, multi-agent learning and coordination, discrete computation, and neurosymbolic AI.</p>
-            <div class="contact-line">
-              <span>Oxford, UK</span>
-              <span class="separator" aria-hidden="true">/</span>
-              <!-- TODO: Replace with <a href="mailto:YOUR_EMAIL">Email <span aria-hidden="true">↗</span></a>. -->
-              <span class="pending-link" aria-disabled="true" title="Add your email address">Email <span aria-hidden="true">↗</span></span>
-            </div>
+            <p class="bio">I’m a DPhil student in machine learning at Oxford. <span class="bio-research">I work on optimization, multi-agent coordination, discrete computation, and neurosymbolic AI.</span></p>
           </div>
 
-          <button class="animation-toggle" id="animation-toggle" type="button" aria-controls="ecology" aria-pressed="false" hidden>Pause animation</button>
+          <div class="hero-controls">
+            <button class="animation-toggle" id="animation-toggle" type="button" aria-controls="ecology" aria-pressed="false" hidden>Pause animation</button>
+          </div>
         </section>
 
         <section class="content-section" id="publications" aria-labelledby="publications-heading">
-          <div class="section-heading">
-            <h2 id="publications-heading">Publications</h2>
-            <!-- TODO: Use the same Scholar URL as in the header. -->
-            <span class="pending-link section-link" aria-disabled="true" title="Add your Google Scholar profile URL">Full list on Scholar <span aria-hidden="true">↗</span></span>
+          <div class="section-heading" data-reveal>
+            <h2 id="publications-heading">Selected works</h2>
+            <a class="section-link" href="https://scholar.google.com/citations?user=EOXzZqoAAAAJ&amp;hl=en" target="_blank" rel="noopener">Full list on Scholar</a>
           </div>
 
           <ol class="publication-list">
-            <!-- TODO: Confirm the complete author list and add paper/code links. -->
-            <li class="publication">
+            <li class="publication" data-reveal>
+              <div class="publication-year">2026</div>
+              <article>
+                <h3>Ad-Hoc Teamwork from Human Demonstrations</h3>
+                <p class="authors"><strong>Darius Muglich</strong>, Niklas Lauffer, Tin Dizdarevic, Jakob Foerster</p>
+                <div class="publication-details">
+                  <span class="venue">NeurIPS 2026</span>
+                  <span class="resource-note">PDF and code coming soon</span>
+                </div>
+              </article>
+            </li>
+
+            <li class="publication" data-reveal>
+              <div class="publication-year">2025</div>
+              <article>
+                <h3>Expected Return Symmetries</h3>
+                <p class="authors"><strong>Darius Muglich</strong>, Johannes Forkel, Elise van der Pol, Jakob Foerster</p>
+                <div class="publication-details">
+                  <span class="venue">ICLR 2025</span>
+                  <div class="paper-links" aria-label="Paper resources">
+                    <a href="https://proceedings.iclr.cc/paper_files/paper/2025/file/595a991a815e7a9d76a5580156d46f3d-Paper-Conference.pdf" target="_blank" rel="noopener" aria-label="Expected Return Symmetries PDF">PDF</a>
+                    <a href="https://github.com/gfppoy/expected-return-symmetries" target="_blank" rel="noopener" aria-label="Expected Return Symmetries code">Code</a>
+                  </div>
+                </div>
+              </article>
+            </li>
+
+            <li class="publication" data-reveal>
               <div class="publication-year">2022</div>
               <article>
                 <h3>Equivariant Networks for Zero-Shot Coordination</h3>
-                <p class="authors"><strong>Darius Muglich</strong>, <span class="placeholder">[Add co-authors in publication order]</span></p>
+                <p class="authors"><strong>Darius Muglich</strong>, Christian Schroeder de Witt, Elise van der Pol, Shimon Whiteson, Jakob Foerster</p>
                 <div class="publication-details">
                   <span class="venue">NeurIPS 2022</span>
                   <div class="paper-links" aria-label="Paper resources">
-                    <span class="pending-link" aria-disabled="true" title="Add the paper PDF URL">PDF <span aria-hidden="true">↗</span></span>
-                    <span class="pending-link" aria-disabled="true" title="Add the code repository URL, or remove if unavailable">Code <span aria-hidden="true">↗</span></span>
+                    <a href="https://proceedings.neurips.cc/paper_files/paper/2022/file/29e4b51d45dc8f534260adc45b587363-Paper-Conference.pdf" target="_blank" rel="noopener" aria-label="Equivariant Networks for Zero-Shot Coordination PDF">PDF</a>
+                    <a href="https://github.com/gfppoy/equivariant-zsc" target="_blank" rel="noopener" aria-label="Equivariant Networks for Zero-Shot Coordination code">Code</a>
                   </div>
                 </div>
               </article>
             </li>
 
-            <!-- TODO: Confirm this publication's title, authors, venue, year, and links. -->
-            <li class="publication">
-              <div class="publication-year placeholder">[Year]</div>
+            <li class="publication" data-reveal>
+              <div class="publication-year">2022</div>
               <article>
-                <h3>Expected Return Symmetries</h3>
-                <p class="authors"><strong>Darius Muglich</strong>, <span class="placeholder">[Add co-authors in publication order]</span></p>
+                <h3>Generalized Beliefs for Cooperative AI</h3>
+                <p class="authors"><strong>Darius Muglich</strong>, Luisa Zintgraf, Christian Schroeder de Witt, Shimon Whiteson, Jakob Foerster</p>
                 <div class="publication-details">
-                  <span class="venue placeholder">[Venue · Year]</span>
+                  <span class="venue">ICML 2022</span>
                   <div class="paper-links" aria-label="Paper resources">
-                    <span class="pending-link" aria-disabled="true" title="Add the paper PDF URL">PDF <span aria-hidden="true">↗</span></span>
-                    <span class="pending-link" aria-disabled="true" title="Add the code repository URL, or remove if unavailable">Code <span aria-hidden="true">↗</span></span>
-                  </div>
-                </div>
-              </article>
-            </li>
-
-            <!-- TODO: Confirm this publication's title, authors, venue, year, and links. -->
-            <li class="publication">
-              <div class="publication-year placeholder">[Year]</div>
-              <article>
-                <h3>Ad-hoc Teamwork from Human Demonstrations</h3>
-                <p class="authors"><strong>Darius Muglich</strong>, <span class="placeholder">[Add co-authors in publication order]</span></p>
-                <div class="publication-details">
-                  <span class="venue placeholder">[Venue · Year]</span>
-                  <div class="paper-links" aria-label="Paper resources">
-                    <span class="pending-link" aria-disabled="true" title="Add the paper PDF URL">PDF <span aria-hidden="true">↗</span></span>
-                    <span class="pending-link" aria-disabled="true" title="Add the code repository URL, or remove if unavailable">Code <span aria-hidden="true">↗</span></span>
+                    <a href="https://proceedings.mlr.press/v162/muglich22a/muglich22a.pdf" target="_blank" rel="noopener" aria-label="Generalized Beliefs for Cooperative AI PDF">PDF</a>
+                    <a href="https://github.com/gfppoy/hanabi-gbs" target="_blank" rel="noopener" aria-label="Generalized Beliefs for Cooperative AI code">Code</a>
                   </div>
                 </div>
               </article>
@@ -110,23 +130,21 @@
         </section>
 
         <section class="content-section research-section" id="research" aria-labelledby="research-heading">
-          <div class="section-heading">
-            <h2 id="research-heading">Current Research</h2>
+          <div class="section-heading" data-reveal>
+            <h2 id="research-heading">Current Work</h2>
           </div>
           <dl class="research-list">
-            <div class="research-item">
-              <dt>Discrete logic network optimization</dt>
-              <dd>Investigating direct optimization of logic gate types and network connectivity, without relying on differentiable relaxations.</dd>
+            <div class="research-item" data-reveal>
+              <dt>Neurosymbolic robot control</dt>
+              <dd>Robots typically run hand-engineered controllers that struggle in situations their designers didn’t anticipate. I’m developing methods that refine existing controllers, such as behaviour trees, with learned adaptations. The robot improves from experience while keeping an explicit decision structure that engineers can inspect and formally verify.</dd>
             </div>
-            <div class="research-item">
-              <dt>Max-margin theory</dt>
-              <!-- TODO: Replace with the specific setting, margin, and theoretical question. -->
-              <dd class="placeholder">[Add a short description of the setting, the margin being studied, and the theoretical question.]</dd>
+            <div class="research-item" data-reveal>
+              <dt>Logic gate network optimization</dt>
+              <dd>Logic gate networks are compact models that run very efficiently on hardware, but improving a trained circuit is hard because useful changes often couple a connection and a gate function. I’m developing a discrete optimization method that makes these joint edits practical to evaluate, with efficient approximations for when exhaustive scoring is expensive.</dd>
             </div>
-            <div class="research-item">
-              <dt>Neurosymbolic robotics</dt>
-              <!-- TODO: Replace with the concrete technical problem, without undisclosed results. -->
-              <dd class="placeholder">[Add the concrete problem connecting symbolic decision-making with learned or low-level robot control.]</dd>
+            <div class="research-item" data-reveal>
+              <dt>Implicit bias in reinforcement learning</dt>
+              <dd>When many policies are equally good under the training objective, the optimizer’s implicit preferences determine which one is learned, and with it how the policy generalizes. I’m developing theory that characterizes this implicit bias for policy-gradient methods.</dd>
             </div>
           </dl>
         </section>
@@ -137,5 +155,6 @@
         <a href="#top">Back to top <span aria-hidden="true">↑</span></a>
       </footer>
     </div>
+
   </body>
 </html>

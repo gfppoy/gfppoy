@@ -1,0 +1,14 @@
+
+# Local packing evidence and review reports; not site assets.
+/.packing-work/
+**/__pycache__/
+
+# Local/editor files, credentials and generated deployment output.
+.DS_Store
+.Rhistory
+.env*
+.dev.vars*
+node_modules/
+.wrangler/
+/_site/
+/.site-work/
