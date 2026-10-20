@@ -1,7 +1,4 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#f7f7f2"/>
-  <g fill="none" stroke="#637f6b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M32 49V30L20 19M32 30l13-12M32 39l-15-8M38 24V13"/>
-  </g>
-  <g fill="#637f6b"><circle cx="20" cy="19" r="2.5"/><circle cx="45" cy="18" r="2.5"/><circle cx="17" cy="31" r="2.5"/></g>
+  <rect width="64" height="64" rx="12" fill="#f7f7f2"/>
+  <text x="32" y="44" text-anchor="middle" fill="#20211f" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="39" font-weight="500" letter-spacing="-2">dm</text>
 </svg>
