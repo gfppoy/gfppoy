@@ -8,7 +8,7 @@ from fractions import Fraction as F
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]/'packing'
-# Highest-gain distinct constructions: 548 is a border extension of 503.
+# Curated featured arrangements, grouped by shape and improvement.
 FEATURED = ['squares-328','squares-503','squares-757','circles-577','circles-503','circles-531']
 E = html.escape
 
@@ -94,14 +94,8 @@ def detail(r, update=None):
     date=checked_date(r)
     notice='Compared with the exact certificate linked below.' if square else 'Compared with Packomania’s printed radius, which is rounded to 12 decimal places. The published coordinate file reports the same radius; its centres use a translated unit-square frame.'
     if r['status']=='precision-scale':notice+=' This case was already publicly attributed to Evan Daniel; no new result is claimed.'
-    credit = ''
-    if square:
-        credit = 'Built using ' + external('https://github.com/franciscouzo/square-packing', 'Francisco Couzo’s square-packing solver') + '.'
-    if r['parent_n']:
-        credit += f' Derived from a packing of {r["parent_n"]} squares.'
-    credit = f'<p class="packing-date packing-credit">{credit}</p>' if credit else ''
     body=f'''<div class="packing-intro"><p class="eyebrow">Packing problems</p><h1>{E(title(r))}</h1><p>{brief}</p></div>
-<div class="packing-detail"><a class="drawing-link" href="drawings/{r['id']}.svg" aria-label="Open full-size diagram"><img src="drawings/{r['id']}.svg" width="1016" height="1016" fetchpriority="high" alt="{E(title(r))}"/></a><div class="packing-facts"><p class="eyebrow">This arrangement</p><p class="detail-value">{value(r['value'])}</p><p class="packing-date">{label} · 8 significant figures</p><p class="detail-comparison">{comparison_link(r)}</p><table class="original-comparison"><caption>Comparison recorded {date}</caption><thead><tr><th scope="col">Arrangement</th><th scope="col">{label}</th></tr></thead><tbody><tr><th scope="row">This arrangement</th><td>{value(r['value'])}</td></tr><tr><th scope="row">{external(r['source']['url'], source_label(r))}</th><td>{value(r['reference'])}</td></tr></tbody></table><p class="packing-date">Difference: {value(abs(float(F(r['gain_absolute_exact']))))} {'smaller side' if square else 'larger radius'}.</p><p class="packing-date">{notice}</p>{update_note(r, update)}<div class="packing-links">{external(r['source']['url'],'Comparison source')}{external(r['problem_url'],'Problem catalogue')}<a href="{r['geometry']}" download>Coordinates</a></div>{credit}</div></div>'''
+<div class="packing-detail"><a class="drawing-link" href="drawings/{r['id']}.svg" aria-label="Open full-size diagram"><img src="drawings/{r['id']}.svg" width="1016" height="1016" fetchpriority="high" alt="{E(title(r))}"/></a><div class="packing-facts"><p class="eyebrow">This arrangement</p><p class="detail-value">{value(r['value'])}</p><p class="packing-date">{label} · 8 significant figures</p><p class="detail-comparison">{comparison_link(r)}</p><table class="original-comparison"><caption>Comparison recorded {date}</caption><thead><tr><th scope="col">Arrangement</th><th scope="col">{label}</th></tr></thead><tbody><tr><th scope="row">This arrangement</th><td>{value(r['value'])}</td></tr><tr><th scope="row">{external(r['source']['url'], source_label(r))}</th><td>{value(r['reference'])}</td></tr></tbody></table><p class="packing-date">Difference: {value(abs(float(F(r['gain_absolute_exact']))))} {'smaller side' if square else 'larger radius'}.</p><p class="packing-date">{notice}</p>{update_note(r, update)}<div class="packing-links">{external(r['source']['url'],'Comparison source')}{external(r['problem_url'],'Problem catalogue')}<a href="{r['geometry']}" download>Coordinates</a></div></div></div>'''
     return shell(title(r),body,f'{title(r)} by Darius Muglich. Diagram, exact coordinates and a dated comparison with {source_label(r)}.',r['id']+'.html')
 
 def build():
