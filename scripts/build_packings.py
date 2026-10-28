@@ -63,7 +63,7 @@ def draw(r):
     assert len(parts)==r['n']
     svg=f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="-8 -8 1016 1016" role="img" aria-labelledby="title desc">
 <title id="title">{E(title(r))}</title><desc id="desc">Arrangement drawn from the retained coordinates. {E(comparison(r))}, against the cited source checked on {r['checked_at'][:10]}. Rendering is rounded; the coordinate download preserves exact values.</desc>
-<rect x="0" y="0" width="1000" height="1000" fill="#f7f7f2" stroke="#818a7c" stroke-width="1.8"/>
+<rect x="0" y="0" width="1000" height="1000" fill="#fafaf8" stroke="#818a7c" stroke-width="1.8"/>
 <g fill="{fill}" stroke="{stroke}" stroke-width="0.85" stroke-linejoin="round">{''.join(parts)}</g></svg>'''
     (ROOT/'drawings'/f'{r["id"]}.svg').write_text(svg)
 
@@ -71,7 +71,7 @@ def shell(name, body, description, page='index.html'):
     url = 'https://dariusmuglich.com/packing/' + ('' if page == 'index.html' else page)
     social = f'''<meta property="og:type" content="website"><meta property="og:site_name" content="Darius Muglich"><meta property="og:title" content="{E(name,quote=True)} — Darius Muglich"><meta property="og:description" content="{E(description,quote=True)}"><meta property="og:url" content="{url}"><meta property="og:image" content="https://dariusmuglich.com/assets/packing-preview.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Packing problems by Darius Muglich: 328 unit squares in a square"><meta name="twitter:card" content="summary_large_image">'''
     return f'''<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light"><meta name="theme-color" content="#f7f7f2"><meta name="description" content="{E(description,quote=True)}"><title>{E(name)} — Darius Muglich</title><link rel="icon" href="../favicon.svg?v=dm-1" type="image/svg+xml"><link rel="canonical" href="https://dariusmuglich.com/packing/{'' if page=='index.html' else page}"><link rel="stylesheet" href="../style.css?v=helvetica-2"><link rel="stylesheet" href="packing.css?v=helvetica-2">{social}</head>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light"><meta name="theme-color" content="#fafaf8"><meta name="description" content="{E(description,quote=True)}"><title>{E(name)} — Darius Muglich</title><link rel="icon" href="../favicon.svg?v=dm-1" type="image/svg+xml"><link rel="canonical" href="https://dariusmuglich.com/packing/{'' if page=='index.html' else page}"><link rel="stylesheet" href="../style.css?v=helvetica-2"><link rel="stylesheet" href="packing.css?v=helvetica-2">{social}</head>
 <body class="packing-page"><a class="skip-link" href="#main">Skip to content</a><div class="page"><header class="site-header"><a class="wordmark" href="../">Darius Muglich</a><nav class="header-links" aria-label="Page navigation"><a href="{'../for-fun/' if page=='index.html' else './'}"><span aria-hidden="true">←</span> {'For fun' if page=='index.html' else 'All packings'}</a></nav></header><main id="main">{body}</main><footer class="site-footer"><span>Packing experiments · October 2026</span><a href="../">← Home</a></footer></div></body></html>'''
 
 def update_note(r, update, compact=False):
