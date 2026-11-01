@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <title>Darius Muglich — CV</title>
 <style>
-@page { size: A4; margin: 15mm 17mm; }
+@page { size: A4; margin: 12mm 17mm; }
 * { box-sizing: border-box; }
 body { margin: 0; color: #222; font: 10pt/1.35 "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 a { color: inherit; text-decoration: none; }
@@ -14,15 +14,15 @@ h1 { font-size: 25pt; line-height: 1.1; font-weight: 500; letter-spacing: -.6pt;
 .links { margin: 0; font-size: 9pt; color: #555; }
 .links a + a::before { content: " / "; padding: 0 5pt; color: #aaa; }
 section { margin-top: 7pt; }
-h2 { margin: 0 0 8pt; border-bottom: .5pt solid #ccc; padding-bottom: 4pt; font-size: 9pt; font-weight: 500; color: #555; }
-.entry { margin-bottom: 6pt; break-inside: avoid; }
+h2 { margin: 0 0 6pt; border-bottom: .5pt solid #ccc; padding-bottom: 4pt; font-size: 9pt; font-weight: 500; color: #555; }
+.entry { margin-bottom: 4pt; break-inside: avoid; }
 .row { display: flex; justify-content: space-between; align-items: baseline; gap: 12pt; }
 h3 { margin: 0; font-size: 10pt; font-weight: 500; }
 time { flex-shrink: 0; color: #555; font-size: 9pt; font-variant-numeric: tabular-nums; }
 p { margin: 2pt 0 0; }
 .detail { color: #555; font-size: 9pt; }
-.description { margin-top: 4pt; }
-.paper { margin-bottom: 6pt; break-inside: avoid; }
+.description { margin-top: 4pt; font-size: 9pt; }
+.paper { margin-bottom: 4pt; break-inside: avoid; }
 .paper h3 { font-weight: 500; }
 .authors { font-size: 9pt; color: #555; margin-top: 1pt; }
 .authors strong { font-weight: 500; color: #222; }
@@ -30,6 +30,8 @@ p { margin: 2pt 0 0; }
 .awards li { margin-bottom: 3pt; }
 .awards strong { font-weight: 500; }
 .contribution { font-size: 9pt; margin-top: 3pt; line-height: 1.35; }
+.research-focus { margin-top: 7pt; font-size: 9.5pt; }
+.skills { margin-top: 4pt; font-size: 9pt; color: #555; }
 </style>
 </head>
 <body>
@@ -37,11 +39,13 @@ p { margin: 2pt 0 0; }
 <h1>Darius Muglich</h1>
 <p class="subtitle">Machine learning researcher · DPhil student, University of Oxford</p>
 <p class="links"><a href="https://dariusmuglich.com/">dariusmuglich.com</a><a href="https://scholar.google.com/citations?user=EOXzZqoAAAAJ&amp;hl=en">Google Scholar</a></p>
+<p class="research-focus">Research in reinforcement learning, multi-agent systems, generalization, and optimization.</p>
+<p class="skills">Programming &amp; frameworks: Python, C++, PyTorch, JAX.</p>
 </header>
 <section>
 <h2>Education</h2>
 <div class="entry">
-<div class="row"><h3>University of Oxford</h3><time>2023–present</time></div>
+<div class="row"><h3>University of Oxford</h3><time>2023–present · Expected September 2027</time></div>
 <p>DPhil · Autonomous Intelligent Machines and Systems (AIMS CDT)</p>
 <p class="detail">Supervisor: Jakob Foerster</p>
 <p class="detail">Thesis on policy selection in reinforcement learning: how learning biases and structural constraints shape learned behaviour and generalization.</p>
@@ -54,19 +58,6 @@ p { margin: 2pt 0 0; }
 <div class="entry">
 <div class="row"><h3>University of British Columbia</h3><time>2015–2020</time></div>
 <p>BSc · Combined Honours in Mathematics and Computer Science</p>
-</div>
-</section>
-<section>
-<h2>Research and industry experience</h2>
-<div class="entry">
-<div class="row"><h3>UC Berkeley · Center for Human-Compatible AI</h3><time>Jun–Sep 2025</time></div>
-<p class="detail">Visiting Researcher</p>
-<p class="description">Learned latent representations of human strategies from unlabeled demonstrations, enabling the construction of diverse AI partners for evaluating human–AI coordination.</p>
-</div>
-<div class="entry">
-<div class="row"><h3>Bazaarvoice</h3><time>Aug 2022–Sep 2026</time></div>
-<p class="detail">Data Scientist V · Full-time initially; part-time during the doctorate</p>
-<p class="description">Primary engineer for a bandit-based campaign optimization method, delivering an estimated 40% lift in incremental revenue over an analyst-designed heuristic in a multi-month company A/B test.</p>
 </div>
 </section>
 <section>
@@ -90,6 +81,19 @@ p { margin: 2pt 0 0; }
 <div class="row"><h3><a href="https://proceedings.mlr.press/v162/muglich22a/muglich22a.pdf">Generalized Beliefs for Cooperative AI</a></h3><time>ICML 2022</time></div>
 <p class="authors"><strong>Darius Muglich</strong>, Luisa Zintgraf, Christian Schroeder de Witt, Shimon Whiteson, Jakob Foerster</p>
 <p class="contribution">Developed autoregressive transformer belief models that generalize to unfamiliar partner conventions and improve ad-hoc teamplay through belief-based search.</p>
+</div>
+</section>
+<section>
+<h2>Research and industry experience</h2>
+<div class="entry">
+<div class="row"><h3>UC Berkeley · Center for Human-Compatible AI</h3><time>Jun–Sep 2025</time></div>
+<p class="detail">Visiting Researcher</p>
+<p class="description">Developed a pipeline combining latent-variable modelling, search over human conventions, and KL-regularized PPO to construct playable evaluation partners.</p>
+</div>
+<div class="entry">
+<div class="row"><h3>Bazaarvoice</h3><time>Aug 2022–Sep 2026</time></div>
+<p class="detail">Data Scientist V · Full-time initially; part-time during the doctorate</p>
+<p class="description">Primary engineer for a bandit-based campaign optimization method, delivering an estimated 40% lift in incremental revenue over an analyst-designed heuristic in a multi-month company A/B test.</p>
 </div>
 </section>
 <section>
