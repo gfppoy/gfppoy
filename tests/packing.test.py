@@ -11,7 +11,7 @@ class Links(HTMLParser):
         self.links += [v for k,v in attrs if k in ('href','src')]
 class PackingTests(unittest.TestCase):
     def test_every_comparison_recalculates_from_exact_values(self):
-        self.assertEqual(len(DATA['results']),108)
+        self.assertEqual(len(DATA['results']),142)
         for r in DATA['results']:
             own,ref=F(r['value_exact']),F(r['reference_exact'])
             gain=ref-own if r['kind']=='squares' else own-ref
@@ -33,7 +33,9 @@ class PackingTests(unittest.TestCase):
                 self.assertEqual(F(lines[0].split()[1]),F(r['value_exact']))
             else:
                 circles=json.loads(raw)['circles'];self.assertEqual(len(circles),r['n'])
-                for c in circles:self.assertEqual(F(c['r']),F(r['value_exact']))
+                for c in circles:
+                    radius=F(c['r']) if isinstance(c,dict) else F(c[2],json.loads(raw)['scale'])
+                    self.assertEqual(radius,F(r['value_exact']))
     def test_internal_links_resolve(self):
         for page in (ROOT/'packing').glob('*.html'):
             p=Links();p.feed(page.read_text())
@@ -55,12 +57,12 @@ class PackingTests(unittest.TestCase):
             gains=[r['gain_percent'] for r in chosen]
             self.assertEqual(gains,sorted(gains,reverse=True))
         self.assertFalse('squares-503' in FEATURED and 'squares-548' in FEATURED)
-        from build_packings import card, detail
+        from build_packings import card, detail, checked_date
         for key in FEATURED:
             r=byid[key]
-            self.assertIn('than the value listed',card(r))
+            self.assertIn('larger radius' if r['kind']=='circles' else 'smaller container side',card(r))
             self.assertIn(r['source']['url'],card(r))
-            self.assertIn('Comparison recorded 19 October 2026',detail(r))
+            self.assertIn('Comparison recorded '+checked_date(r),detail(r))
         self.assertNotIn('class="collection-note"',(ROOT/'packing/index.html').read_text())
 
     def test_display_precision_is_consistent(self):
@@ -81,6 +83,6 @@ class PackingTests(unittest.TestCase):
             self.assertFalse((ROOT/'packing/drawings'/f'{key}.svg').exists())
             self.assertFalse((ROOT/'packing/coordinates'/f'{key}.cert').exists())
         import csv
-        self.assertEqual(len(list(csv.DictReader((ROOT/'packing/data/results.csv').read_text().splitlines()))),108)
+        self.assertEqual(len(list(csv.DictReader((ROOT/'packing/data/results.csv').read_text().splitlines()))),142)
 
 if __name__=='__main__':unittest.main()

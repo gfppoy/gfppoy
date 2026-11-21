@@ -34,7 +34,7 @@ class HistoryTests(unittest.TestCase):
         self.assertEqual(review(DATA,candidate,updates),([],{}))
     def test_missing_entries_do_not_refresh_or_publish(self):
         report,updates=review(DATA,{'results':[]},{})
-        self.assertFalse(updates);self.assertEqual(len(report),108)
+        self.assertFalse(updates);self.assertEqual(len(report),len(DATA['results']))
     def test_changed_geometry_is_rejected(self):
         candidate=copy.deepcopy(DATA);candidate['results'][0]['sha256']='different'
         with self.assertRaises(ValueError):review(DATA,candidate,{})
