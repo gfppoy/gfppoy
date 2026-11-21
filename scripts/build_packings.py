@@ -8,8 +8,6 @@ from fractions import Fraction as F
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]/'packing'
-# Curated featured arrangements, grouped by shape and improvement.
-FEATURED = ['squares-328','squares-503','squares-757','circles-465','circles-577','circles-532']
 E = html.escape
 
 def external(url, label):
@@ -39,10 +37,13 @@ def source_label(r):
 def comparison_link(r):
     link=external(r['source']['url'], source_label(r))
     if r['status']=='improved':
-        if 'standing' in r:
-            prefix='Precision lead · ' if r['standing']=='precision lead' else ''
-            return f'{prefix}{comparison(r)} than the comparison value from {link} in the {checked_date(r)} ledger.'
-        return f'{comparison(r)} than the value listed {"in" if r["kind"]=="squares" else "on"} {link} on {checked_date(r)}.'
+        name=r['source']['name']
+        wording='than the value listed in' if r['kind']=='squares' else 'than the value listed on'
+        if name.startswith('Basurto'):
+            wording='than the radius calculated from the cavity length in'
+        elif 'coordinate comparison' in name or name=='MinMax Arena centres':
+            wording='than the radius calculated from the coordinates on'
+        return f'{comparison(r)} {wording} {link} on {checked_date(r)}.'
     if r['status']=='superseded': return f'{link} lists a better value.'
     if r['status']=='precision-scale': return f'Rounding-scale difference from {link}; no improvement claimed.'
     return f'Matches the value listed by {link}.'
@@ -98,14 +99,17 @@ def update_note(r, update, compact=False):
     if not update:
         return ''
     date=checked_date(update)
+    if update.get('status')=='matches-precision':
+        link=external(update['source']['url'],update['source']['name'])
+        return f'<aside class="packing-update" id="later-update"><p class="eyebrow">Later update · {date}</p><p>The radius matches {link} to its 12 published decimal places.</p></aside>'
     if compact:
         return f'<p class="packing-update-label"><a href="{r["id"]}.html#later-update">Later surpassed</a></p>'
     link=external(update['source']['url'], update['source']['name'])
     return f'<aside class="packing-update" id="later-update" aria-label="Later comparison"><p class="eyebrow">Later update · {date}</p><p>A better public packing was listed by {date}: {value(update["reference"])} ({"container side" if r["kind"]=="squares" else "radius"}). {link}</p></aside>'
 
-def card(r, update=None):
+def card(r, update=None, first=False):
     objective='Container side' if r['kind']=='squares' else 'Radius'
-    priority = 'high' if r['id'] == FEATURED[0] else 'auto'
+    priority = 'high' if first else 'auto'
     return f'''<article class="packing-card"><a class="drawing-link" href="{r['id']}.html" aria-label="View {E(title(r))} and comparison details"><img src="drawings/{r['id']}.svg" width="1016" height="1016" loading="eager" fetchpriority="{priority}" alt="{E(title(r))}"/></a><h2><a href="{r['id']}.html">{E(title(r))}</a></h2><p class="packing-value">{objective} <span>≈ {value(r['value'])}</span></p><p class="packing-comparison">{comparison_link(r)}</p>{update_note(r, update, compact=True)}</article>'''
 
 def detail(r, update=None):
@@ -119,35 +123,41 @@ def detail(r, update=None):
 <div class="packing-detail"><a class="drawing-link" href="drawings/{r['id']}.svg" aria-label="Open full-size diagram"><img src="drawings/{r['id']}.svg" width="1016" height="1016" fetchpriority="high" alt="{E(title(r))}"/></a><div class="packing-facts"><p class="eyebrow">This arrangement</p><p class="detail-value">{value(r['value'])}</p><p class="packing-date">{label} · 8 significant figures</p><p class="detail-comparison">{comparison_link(r)}</p><table class="original-comparison"><caption>Comparison recorded {date}</caption><thead><tr><th scope="col">Arrangement</th><th scope="col">{label}</th></tr></thead><tbody><tr><th scope="row">This arrangement</th><td>{value(r['value'])}</td></tr><tr><th scope="row">{external(r['source']['url'], source_label(r))}</th><td>{value(r['reference'])}</td></tr></tbody></table><p class="packing-date">Difference: {value(abs(float(F(r['gain_absolute_exact']))))} {'smaller side' if square else 'larger radius'}.</p><p class="packing-date">{notice}</p>{update_note(r, update)}<div class="packing-links">{external(r['source']['url'],'Comparison source')}{external(r['problem_url'],'Problem catalogue')}<a href="{r['geometry']}" download>Coordinates</a></div></div></div>'''
     return shell(title(r),body,f'{title(r)} by Darius Muglich. Diagram, exact coordinates and a dated comparison with {source_label(r)}.',r['id']+'.html',datetime.fromisoformat(r['checked_at']).strftime('%B'))
 
+def ranked_results(rows, updates):
+    def order(r):
+        group={'material lead':0,'precision lead':1}.get(r.get('standing'),2)
+        if r['id'] in updates:
+            group=3 if updates[r['id']].get('status')=='matches-precision' else 4
+        return (group,-r['gain_percent'],r['id'])
+    return sorted(rows,key=order)
+
 def build():
-    manifest=json.loads((ROOT/'data/results.json').read_text());rows=manifest['results'];byid={r['id']:r for r in rows}
+    manifest=json.loads((ROOT/'data/results.json').read_text());rows=manifest['results']
     updates=json.loads((ROOT/'data/updates.json').read_text())
     assert all(r['status']=='improved' for r in rows), 'Public collection requires an original improvement comparison'
     square_count=sum(r['kind']=='squares' for r in rows); circle_count=len(rows)-square_count
     (ROOT/'drawings').mkdir(exist_ok=True)
     for r in rows:
         draw(r);(ROOT/(r['id']+'.html')).write_text(detail(r, updates.get(r['id'])))
-    assert all(byid[k]['status']=='improved' for k in FEATURED), 'Recurate featured results after a source update'
-    groups=[]
-    for kind, heading in [('circles','Circles in a unit square'), ('squares','Unit squares in a square')]:
-        chosen=sorted([byid[k] for k in FEATURED if byid[k]['kind']==kind], key=lambda r:r['gain_percent'], reverse=True)
-        cards=''.join(card(r, updates.get(r['id'])) for r in chosen)
-        groups.append(f'<section class="packing-group" aria-labelledby="{kind}-heading"><h2 class="packing-group-title" id="{kind}-heading">{heading}</h2><div class="packing-gallery">{cards}</div></section>')
-    gallery=''.join(groups)
+    rows=ranked_results(rows, updates)
+    featured=[r for r in rows if r.get('standing')=='material lead' and r['id'] not in updates][:6]
+    cards=''.join(card(r,first=i==0) for i,r in enumerate(featured))
+    gallery=f'<section class="packing-group" aria-labelledby="featured-heading"><h2 class="packing-group-title" id="featured-heading">Current record candidates</h2><div class="packing-gallery">{cards}</div></section>'
     table=''
-    for r in sorted(rows,key=lambda row:row['checked_at'],reverse=True):
+    for r in rows:
         status=comparison(r)
         if r.get('standing')=='precision lead':
             status='Precision lead · '+status
-        later=f'<br><a class="packing-update-label" href="{r["id"]}.html#later-update">Later surpassed</a>' if r['id'] in updates else ''
+        label='Matches published precision' if updates.get(r['id'],{}).get('status')=='matches-precision' else 'Later surpassed'
+        later=f'<br><a class="packing-update-label" href="{r["id"]}.html#later-update">{label}</a>' if r['id'] in updates else ''
         table+=f'<tr><th scope="row"><a href="{r["id"]}.html">{title(r)}</a></th><td>{value(r["value"])}</td><td>{E(status)}<span class="packing-date reference-date">{checked_date(r)}</span>{later}</td></tr>'
     date=manifest['checked_at'][:10]
-    body=f'''<div class="packing-intro"><h1>Packing problems</h1><p>Fitting shapes into as little space as possible. A hobby and a testbed for mixed discrete–continuous optimization. The 21 November 2026 ledger records 41 circle packings above their linked public comparison values. Of these, 30 improve the radius by at least one part per million and 11 are precision leads. Earlier comparisons retain their October dates.</p><p class="packing-date">Squares: minimize the container side. Circles: maximize the common radius in the indicated container.</p></div>{gallery}
+    body=f'''<div class="packing-intro"><h1>Packing problems</h1><p>Fitting shapes into as little space as possible. A hobby and a testbed for mixed discrete–continuous optimization. The 21 November 2026 ledger records 41 circle packings above their linked public comparison values. Of these, 30 improve the radius by at least one part per million and 11 are precision leads. Earlier arrangements appear below the current candidates.</p><p class="packing-date">Squares: minimize the container side. Circles: maximize the common radius in the indicated container.</p></div>{gallery}
 <details class="packing-catalogue" id="catalogue"><summary>All {len(rows)} arrangements <span>{square_count} square packings · {circle_count} circle packings</span></summary><div class="table-scroll" tabindex="0" role="region" aria-label="All packing results"><table><thead><tr><th scope="col">Arrangement</th><th scope="col">Side / radius</th><th scope="col">Original comparison</th></tr></thead><tbody>{table}</tbody></table></div><p><a href="data/results.csv" download>Download results CSV</a></p></details>'''
     fields=['id','kind','n','value_exact','reference_exact','gain_percent','checked_at','geometry','sha256','standing','source_url']
     with (ROOT/'data/results.csv').open('w') as f:
         writer=csv.DictWriter(f,fieldnames=fields,lineterminator="\n");writer.writeheader();writer.writerows({**{k:r.get(k,'') for k in fields},'source_url':r['source']['url']} for r in rows)
     (ROOT/'index.html').write_text(shell('Packing problems',body,'Packing problems I enjoy: square and circle arrangements, with diagrams, exact coordinates and dated source comparisons.'))
-    print(f'Built {len(rows)} diagrams and detail pages; {len(FEATURED)} featured.')
+    print(f'Built {len(rows)} diagrams and detail pages; {len(featured)} featured.')
 
 if __name__=='__main__': build()

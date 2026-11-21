@@ -1,1 +1,912 @@
-{}
+{
+  "squares-328": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 18.614132541296208,
+    "reference_exact": "1163383283831013/62500000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-330": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 18.69238815542517,
+    "reference_exact": "1869238815542517/100000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-339": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 18.90735147115527,
+    "reference_exact": "18907351471155269/1000000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-344": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 18.992650556912306,
+    "reference_exact": "3798530111382461/200000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-365": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 19.60418804076574,
+    "reference_exact": "19604188040765743/1000000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-377": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 19.900890357418948,
+    "reference_exact": "4975222589354737/250000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-378": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 19.92577799402106,
+    "reference_exact": "996288899701053/50000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-379": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 19.942674441997625,
+    "reference_exact": "19942674441997623/1000000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-380": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 19.961336650397474,
+    "reference_exact": "798453466015899/40000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-381": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 19.974739817855653,
+    "reference_exact": "4993684954463913/250000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-404": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 20.591378145498002,
+    "reference_exact": "10295689072749001/500000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-412": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 20.798165581953786,
+    "reference_exact": "20798165581953787/1000000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-417": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 20.90430000325183,
+    "reference_exact": "20904300003251829/1000000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-418": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 20.920082122270816,
+    "reference_exact": "20920082122270817/1000000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-419": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 20.935276088178117,
+    "reference_exact": "20935276088178119/1000000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-420": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 20.96457532601072,
+    "reference_exact": "10482287663005361/500000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-421": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 20.972138284730633,
+    "reference_exact": "10486069142365317/500000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-422": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 20.98264253110669,
+    "reference_exact": "20982642531106691/1000000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-453": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 21.787018634989966,
+    "reference_exact": "21787018634989967/1000000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-459": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 21.899016658643042,
+    "reference_exact": "21899016658643041/1000000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-460": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 21.921252855790847,
+    "reference_exact": "10960626427895423/500000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-461": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 21.932206240917182,
+    "reference_exact": "21932206240917181/1000000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-462": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 21.948178236516767,
+    "reference_exact": "21948178236516767/1000000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-463": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 21.968137060991268,
+    "reference_exact": "21968137060991269/1000000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-464": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 21.985004387909854,
+    "reference_exact": "4397000877581971/200000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-496": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 22.764758414729165,
+    "reference_exact": "11382379207364583/500000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-502": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 22.877799456903833,
+    "reference_exact": "11438899728451917/500000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-503": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 22.898785275084506,
+    "reference_exact": "22898785275084507/1000000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-504": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 22.91718147782788,
+    "reference_exact": "572929536945697/25000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-505": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 22.931815798085356,
+    "reference_exact": "11465907899042679/500000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-506": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 22.94817174057898,
+    "reference_exact": "22948171740578981/1000000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-508": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 22.980004403676478,
+    "reference_exact": "22980004403676477/1000000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-548": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 23.877799471758927,
+    "reference_exact": "23877799471758927/1000000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-550": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 23.910917934753694,
+    "reference_exact": "4782183586950739/200000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-551": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 23.927317857666676,
+    "reference_exact": "957092714306667/40000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-552": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 23.94665226377943,
+    "reference_exact": "29850248138483371247641167101336161312715703769174003096078538075763/1246531156408590782246242412465311564085907822462424000000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (verified bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-553": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 23.965901330534862,
+    "reference_exact": "11982950665267431/500000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-554": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 23.975568226927255,
+    "reference_exact": "2996946028365907/125000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-595": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 24.869405963327655,
+    "reference_exact": "3108675745415957/125000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-597": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 24.895778137124655,
+    "reference_exact": "24895778137124653/1000000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-598": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 24.903247376859728,
+    "reference_exact": "24903247376859729/1000000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-599": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 24.925314729417728,
+    "reference_exact": "24925314729417729/1000000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-600": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 24.94098239519008,
+    "reference_exact": "77940569984969/3125000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-601": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 24.958433459442684,
+    "reference_exact": "4991686691888537/200000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-602": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 24.97660883141958,
+    "reference_exact": "24976608831419579/1000000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-603": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 24.98815711854525,
+    "reference_exact": "24988157118545249/1000000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-647": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 25.895505896043836,
+    "reference_exact": "5179101179208767/200000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-648": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 25.90722049437372,
+    "reference_exact": "25907220494373721/1000000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-649": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 25.917985850153784,
+    "reference_exact": "25917985850153783/1000000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-650": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 25.939851708489826,
+    "reference_exact": "25939851708489827/1000000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-651": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 25.95643765917435,
+    "reference_exact": "25956437659174351/1000000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-652": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 25.975365928082873,
+    "reference_exact": "25975365928082873/1000000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-654": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 25.992919517870376,
+    "reference_exact": "207943356142963/8000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-700": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 26.906050069298853,
+    "reference_exact": "6726512517324713/250000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-701": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 26.916150198728882,
+    "reference_exact": "6729037549682221/250000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-702": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 26.932818096495744,
+    "reference_exact": "5386563619299149/200000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-703": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 26.952747340056405,
+    "reference_exact": "6738186835014101/250000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-704": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 26.9652444212648,
+    "reference_exact": "285835818447793989634635767070508175928477340806413441120239846749054265838875766028691467/10600156778938142755076137559124460414455199673909808231303438926520940814375000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (verified bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-705": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 26.982266096187022,
+    "reference_exact": "26982266096187021/1000000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-706": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 26.990502937350726,
+    "reference_exact": "13495251468675363/500000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-755": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 27.917462898767752,
+    "reference_exact": "3489682862345969/125000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-756": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 27.92458641846013,
+    "reference_exact": "27924586418460129/1000000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-757": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 27.940085110527278,
+    "reference_exact": "27940085110527279/1000000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-758": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 27.95830503684901,
+    "reference_exact": "1747394064803063/62500000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-759": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 27.971097901793232,
+    "reference_exact": "27971097901793231/1000000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-760": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 27.99292319163547,
+    "reference_exact": "27992923191635471/1000000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-810": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 28.905568632081504,
+    "reference_exact": "5781113726416301/200000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-811": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 28.914377979927117,
+    "reference_exact": "14457188989963559/500000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-812": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 28.925227963433603,
+    "reference_exact": "14462613981716801/500000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-813": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 28.931473427267207,
+    "reference_exact": "3616434178408401/125000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-814": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 28.956125400896365,
+    "reference_exact": "14478062700448183/500000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-815": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 28.968759350589053,
+    "reference_exact": "14484379675294527/500000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-816": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 28.98252251000995,
+    "reference_exact": "28982522510009949/1000000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-817": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 28.994282410526512,
+    "reference_exact": "14497141205263257/500000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-868": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 29.90138541499797,
+    "reference_exact": "29901385414997971/1000000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-869": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 29.912328799255135,
+    "reference_exact": "29912328799255137/1000000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-870": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 29.924792714658043,
+    "reference_exact": "7481198178664511/250000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-871": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 29.932818096523643,
+    "reference_exact": "5986563619304729/200000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-872": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 29.940230189154285,
+    "reference_exact": "5988046037830857/200000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-873": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 29.963251979786854,
+    "reference_exact": "29963251979786853/1000000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-874": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 29.97962553155547,
+    "reference_exact": "29979625531555469/1000000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-875": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 29.993696413496846,
+    "reference_exact": "29993696413496847/1000000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-927": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 30.889013463196132,
+    "reference_exact": "30889013463196131/1000000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-928": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 30.901385415047965,
+    "reference_exact": "15450692707523983/500000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-929": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 30.911240026070196,
+    "reference_exact": "6182248005214039/200000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-930": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 30.91534269044202,
+    "reference_exact": "30915342690442019/1000000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-932": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 30.940885413163972,
+    "reference_exact": "7735221353290993/250000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-933": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 30.95456560094693,
+    "reference_exact": "3095456560094693/100000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-934": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 30.973310425745517,
+    "reference_exact": "7743327606436379/250000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-935": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 30.991302094672072,
+    "reference_exact": "30991302094672073/1000000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-989": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 31.887546779563305,
+    "reference_exact": "3985943347445413/125000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-990": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 31.89737718010914,
+    "reference_exact": "1594868859005457/50000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-991": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 31.911242830734444,
+    "reference_exact": "15955621415367223/500000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-992": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 31.91995744106078,
+    "reference_exact": "15959978720530391/500000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-993": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 31.92531506258362,
+    "reference_exact": "1596265753129181/50000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-994": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 31.939306901220522,
+    "reference_exact": "31939306901220523/1000000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-995": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 31.95456560095893,
+    "reference_exact": "3195456560095893/100000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-996": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 31.960000006193056,
+    "reference_exact": "998750000193533/31250000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-997": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 31.98300081656686,
+    "reference_exact": "31983000816566861/1000000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "squares-998": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "reference": 31.99685557800492,
+    "reference_exact": "15998427789002459/500000000000000",
+    "source": {
+      "name": "Francisco Couzo\u2019s catalogue (reported bound)",
+      "url": "https://github.com/franciscouzo/square-packing/blob/712c6a6e9ef58a9521784e6b7e236af813422de7/upper_bounds.json"
+    }
+  },
+  "circles-411": {
+    "checked_at": "2026-11-21T13:59:12.058133+00:00",
+    "status": "matches-precision",
+    "reference": 0.025913825313,
+    "reference_exact": "25913825313/1000000000000",
+    "source": {
+      "name": "Packomania",
+      "url": "https://packomania.com/csq/txt/radius.txt"
+    }
+  }
+}

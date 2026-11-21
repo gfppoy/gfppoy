@@ -47,19 +47,17 @@ class PackingTests(unittest.TestCase):
         import sys
         sys.dont_write_bytecode = True
         sys.path.insert(0,str(ROOT/'scripts'))
-        from build_packings import FEATURED
-        byid={r['id']:r for r in DATA['results']}
-        self.assertEqual(len(FEATURED),6)
-        for key in FEATURED:self.assertEqual(byid[key]['status'],'improved')
-        for kind in ['squares','circles']:
-            chosen=[byid[k] for k in FEATURED if byid[k]['kind']==kind]
-            self.assertEqual(len(chosen),3)
-            gains=[r['gain_percent'] for r in chosen]
-            self.assertEqual(gains,sorted(gains,reverse=True))
-        self.assertFalse('squares-503' in FEATURED and 'squares-548' in FEATURED)
-        from build_packings import card, detail, checked_date
-        for key in FEATURED:
-            r=byid[key]
+        from build_packings import ranked_results, card, detail, checked_date
+        updates=json.loads((ROOT/'packing/data/updates.json').read_text())
+        rows=ranked_results(DATA['results'],updates)
+        featured=rows[:6]
+        index=(ROOT/'packing/index.html').read_text()
+        self.assertEqual(index.count('class="packing-card"'),6)
+        self.assertEqual([r['id'] in updates for r in rows],sorted(r['id'] in updates for r in rows))
+        for r in featured:
+            self.assertIn('drawings/'+r['id']+'.svg',index)
+            self.assertEqual(r.get('standing'),'material lead')
+            self.assertTrue(r['checked_at'].startswith('2026-11-21'))
             self.assertIn('larger radius' if r['kind']=='circles' else 'smaller container side',card(r))
             self.assertIn(r['source']['url'],card(r))
             self.assertIn('Comparison recorded '+checked_date(r),detail(r))
